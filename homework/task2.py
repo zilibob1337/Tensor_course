@@ -6,6 +6,13 @@ from statistics import mean
 
 
 def get_list_info(lst):
+    """
+    :param lst: Вложенные списки
+    :return: (min_elem) Минимальный элемент списка
+    :return: (max_elem) Максимальный элемент списка
+    :return: (sum_list) Сумма списка с округлением до 2 знаков после запятой
+    :return: (average) Среднее арифметическое списка с округлением до 2 знаков после запятой
+    """
     print(lst)
     min_elem = min(lst[0:])
     max_elem = max(lst[0:])

@@ -2,6 +2,10 @@
 
 
 def even_sum(lst):
+    """
+    :param lst: Вложенные списки
+    :return: (sum_list) Сумма элементов с четными индексами внутри вложенных списков
+    """
     sum_list = sum(lst[0::2])
     return sum_list
 
