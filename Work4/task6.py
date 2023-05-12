@@ -11,20 +11,15 @@ def create_phone_number(num_tuple):
     """
     str_phone = ''
     i_1 = 0
-    while i_1 < 3:
+    while i_1 < 10:
         if '(' not in str_phone:
             str_phone += '('
         str_phone = str_phone + str(num_tuple[i_1])
         i_1 += 1
-    str_phone += ') '
-    while i_1 < 6:
-        str_phone = str_phone + str(num_tuple[i_1])
-        i_1 += 1
-    str_phone += '-'
-    while i_1 < 10:
-        str_phone = str_phone + str(num_tuple[i_1])
-        i_1 += 1
-    print(str_phone)
+        if i_1 == 3:
+            str_phone += ') '
+        if i_1 == 6:
+            str_phone += '-'
     return str_phone
 
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ

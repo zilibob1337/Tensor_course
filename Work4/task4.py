@@ -20,7 +20,6 @@ def multiplication_chain(num):
         for multi in list(map(int, str(num))):
             result_multi *= multi
         num = result_multi
-        print(type(result_multi))
     return count_multy
 
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ
