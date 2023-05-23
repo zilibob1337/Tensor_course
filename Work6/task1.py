@@ -14,8 +14,7 @@ string = 'Hello'
 def global_changes():
     """
     Получить переменные number = 5, string = 'Hello, dear friend'
-    :return: (number) Числовая переменная
-    :return: (string) Строковая переменная
+    :return: (number,string) Числовая переменная, Строковая переменная
     """
     global number, string
     number, string = 5, 'Hello, dear friend'
