@@ -25,7 +25,29 @@
 
 # первое (класс PublicTransport)
 class PublicTransport:
+    """
+    Класс для вывода на печать информации о марке, цвете, годе выпуска и мощности двигателя
+    ---------
+    Атрибуты:
+        brand: Строка(str) - Марка транспорта
+        engine_power: Число(int) - Мощность двигателя
+        year: Число(int) - Год выпуска
+        color: Строка(str) - Цвет
+        max_speed: Число(int) - Максимальная скорость
+    ---------
+    Методы:
+        info():
+            (СВОЙСТВО) Получить вывод на печать информацию о марке, цвете, годе выпуска и мощности двигателя
+    """
     def __init__(self, brand, engine_power, year, color, max_speed):
+        """
+        Инициализация необходимых атрибутов для объекта PublicTransport
+        :param brand: Марка транспорта
+        :param engine_power: (ЗАЩИЩЕННЫЙ) Мощность двигателя
+        :param year: Год выпуска
+        :param color: Цвет
+        :param max_speed: Максимальная скорость
+        """
         self.brand = brand
         self._engine_power = engine_power
         self.year = year
@@ -34,13 +56,50 @@ class PublicTransport:
 
     @property
     def info(self):
+        """
+        (СВОЙСТВО) Получить вывод на печать информацию о марке, цвете, годе выпуска и мощности двигателя
+        :return:(f'Марка: {self.brand}, Цвет: {self.color}, Год выпуска: {self.year}, Мощность двигателя:' \
+                f' {self._engine_power}') Вывод на печать
+        """
         return f'Марка: {self.brand}, Цвет: {self.color}, Год выпуска: {self.year}, Мощность двигателя:' \
                f' {self._engine_power}'
 
 
 # второе (класс Bus унаследованный от PublicTransport)
 class Bus(PublicTransport):
+    """
+    Унаследованный класс от PublicTransport для:
+        1) получения значения park
+        2) проверка номера парка, что он в диапазоне от 1000 до 9999
+    ---------
+    Атрибуты:
+        brand: Строка(str) - Марка транспорта
+        engine_power: Число(int) - Мощность двигателя
+        year: Число(int) - Год выпуска
+        color: Строка(str) - Цвет
+        max_speed: Число(int) - Максимальная скорость
+        passengers: Число(int) - Количество пассажиров
+        park: Число(int) - Парк приписки автобуса
+        fare: Число(int) - (ЗАЩИЩЕННЫЙ) Стоимость проезда
+    ---------
+    Методы:
+        park():
+            (СВОЙСТВО) Получить значения park(ПРИВАТНЫЙ)
+        park(value):
+            Получить номер парка, что он в диапазоне от 1000 до 9999
+    """
     def __init__(self, brand, engine_power, year, color, max_speed, passengers, park, fare):
+        """
+        Инициализация необходимых атрибутов для объекта Bus
+        :param brand: Марка транспорта
+        :param engine_power: Мощность двигателя
+        :param year: Год выпуска
+        :param color: Цвет
+        :param max_speed: Максимальная скорость
+        :param passengers: Количество пассажиров
+        :param park: Парк приписки автобуса
+        :param fare: (ЗАЩИЩЕННЫЙ) Стоимость проезда
+        """
         super().__init__(brand, engine_power, year, color, max_speed)
         self.passengers = passengers
         self.park = park
@@ -48,17 +107,55 @@ class Bus(PublicTransport):
 
     @property
     def park(self):
+        """
+        (СВОЙСТВО) Получить значения park(ПРИВАТНЫЙ)
+        :return: (__park) (ПРИВАТНЫЙ) Парк приписки автобуса
+        """
         return self.__park
 
     @park.setter
     def park(self, value):
+        """
+        Получить номер парка, что он в диапазоне от 1000 до 9999
+        :param value: Номер парка
+        :return: (self.__park = value) Записывает номер парка в ПРИВАТНЫЙ __park
+        """
         assert 1000 <= value <= 9999, 'Номер парка должен быть в диапазоне от 1000 до 9999'
         self.__park = value
 
 
 # третье (класс Tram унаследованный от PublicTransport)
 class Tram(PublicTransport):
+    """
+    Унаследованный класс от PublicTransport для:
+        1) получения СВОЙСТВО how_long, которое вычисляет время прохождения маршрута по формуле max_speed/(4*path)
+    ---------
+    Атрибуты:
+        brand: Строка(str) - Марка транспорта
+        engine_power: Число(int) - Мощность двигателя
+        year: Число(int) - Год выпуска
+        color: Строка(str) - Цвет
+        max_speed: Число(int) - Максимальная скорость
+        route: Число(int) - (ПРИВАТНЫЙ) Маршрут трамвая
+        path: Число(int) - Длина маршрута
+        fare: Число(int) - (ЗАЩИЩЕННЫЙ) Стоимость проезда
+    ---------
+    Методы:
+        how_long():
+            (СВОЙСТВО) Получить время прохождения маршрута по формуле max_speed/(4*path)
+    """
     def __init__(self, brand, engine_power, year, color, max_speed, route, path, fare):
+        """
+        Инициализация необходимых атрибутов для объекта Tram
+        :param brand: Марка транспорта
+        :param engine_power: Мощность двигателя
+        :param year: Год выпуска
+        :param color: Цвет
+        :param max_speed: Максимальная скорость
+        :param route: (ПРИВАТНЫЙ) Маршрут трамвая
+        :param path: Длина маршрута
+        :param fare: (ЗАЩИЩЕННЫЙ) Стоимость проезда
+        """
         super().__init__(brand, engine_power, year, color, max_speed)
         self.__route = route
         self.path = path
@@ -66,6 +163,10 @@ class Tram(PublicTransport):
 
     @property
     def how_long(self):
+        """
+        (СВОЙСТВО) Получить время прохождения маршрута по формуле max_speed/(4*path)
+        :return: (self.max_speed / (4 * self.path)) Время прохождения маршрута
+        """
         return self.max_speed / (4 * self.path)
 
 

@@ -9,7 +9,25 @@
 # RomanNums('CMXCIX').is_palindrome() --> True
 
 class RomanNums:
+    """
+    Класс для получения:
+        1) перевод римской записи в арабское число
+        2) определение палиндромом арабского числа
+    ---------
+    Атрибуты:
+        roman_num: Строка(str) - Римское число
+    ---------
+    Методы:
+        from_roman():
+            Получить арабское число из римской записи
+        is_palindrome():
+            Является ли арабское число палиндромом (True - является, иначе False)
+    """
     def __init__(self, roman_num):
+        """
+        Инициализация необходимых атрибутов для объекта RomanNums
+        :param roman_num: Римское число
+        """
         self.roman_num = roman_num
 
     def from_roman(self):
