@@ -69,6 +69,7 @@ def func_log(file_log='log.txt'):
 @func_log()
 def func1():
     func1.__doc__ = func_log.__doc__
+    func1.__name__ = func_log.__name__
     pass
 
 
